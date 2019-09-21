@@ -1,0 +1,32 @@
+{
+  "parser": "babel-eslint",
+  // "extends": [
+  //   "eslint:recommended",
+  //   "plugin:import/errors",
+  //   "plugin:react/recommended",
+  //   "plugin:jsx-a11y/recommended",
+  //   "prettier",
+  //   "prettier/react"
+  // ],
+  "rules": {
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1,
+    "no-console": "warn"
+  },
+  "extends": "airbnb",
+  "plugins": ["react", "import", "jsx-a11y", "react-hooks"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  }
+}
