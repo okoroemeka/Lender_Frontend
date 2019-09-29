@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel build src/index.html",
     "dev": "parcel src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
   "repository": {
@@ -36,12 +36,20 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "jest": "^24.9.0",
+    "jest-dom": "^4.0.0",
     "parcel-bundler": "^1.12.3",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "sass": "^1.22.12"
   },
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
+    "react": "15.x || 16.x || 16.4.0-alpha.0911da3",
+    "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "browserslist": [
     "last 2 Chrome versions",

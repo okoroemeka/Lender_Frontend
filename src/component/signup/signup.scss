@@ -1,0 +1,75 @@
+@import "../../style/reusablesStyles/commons.scss";
+.signup {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  &_container {
+    grid-column: 1/-1;
+    grid-row: 1/4;
+    form {
+      margin: 0 auto;
+      width: 90%;
+      height: 100%;
+      padding: 2rem 1rem;
+      box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+      label {
+        display: block;
+        margin-bottom: 1rem;
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          height: 2.8rem;
+          font-size: 1rem;
+          border: none;
+          border-bottom: 1px solid $light_gray;
+          border-radius: 3px;
+          &:focus {
+            outline: 0;
+            border-color: $gray;
+          }
+        }
+        .misMatchPassword:focus {
+          border-color: #ff794d;
+        }
+      }
+      .error {
+        color: #ff794d;
+        font-size: 0.9rem;
+      }
+      button {
+        color: $white;
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 3px;
+        background-color: $primary-color;
+        &:hover {
+          cursor: pointer;
+          background-color: $button_hover;
+          box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+  @media (min-width: 550px) {
+    &_container {
+      grid-column: 1/-1;
+      grid-row: 1/4;
+
+      form {
+        width: 70%;
+      }
+    }
+  }
+  @media (min-width: 850px) {
+    &_container {
+      grid-column: 2/3;
+      grid-row: 2/5;
+      form {
+        width: 65%;
+      }
+    }
+  }
+}

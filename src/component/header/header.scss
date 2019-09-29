@@ -1,0 +1,41 @@
+@import "../../style/reusablesStyles/commons.scss";
+.navbar {
+  color: $primary-color;
+  display: flex;
+  width: 100%;
+  height: 4rem;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  text-transform: uppercase;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  .title {
+    text-decoration: none;
+    font-size: 1.45rem;
+    font-family: "Aclonica", sans-serif;
+    color: $primary-color;
+  }
+  &_items {
+    display: none;
+  }
+  @media (min-width: 850px) {
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    position: fixed;
+    &_items {
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      font-size: 1.05rem;
+      font-weight: bold;
+      .navbar_item {
+        padding: 1rem;
+        text-decoration: none;
+        color: $primary-color;
+      }
+    }
+  }
+}
