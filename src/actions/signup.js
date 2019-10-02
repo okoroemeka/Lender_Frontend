@@ -14,7 +14,6 @@ const signup = (userData) => async (dispatch) => {
     dispatch({ type: SIGN_UP.SUCCESS, payload: data });
     dispatch({ type: SIGN_UP.STATUS, payload: status });
   } catch ({ response: { data: errorObj } }) {
-    console.log('error', errorObj);
     dispatch({ type: SIGN_UP.ERROR, payload: errorObj });
   }
 };

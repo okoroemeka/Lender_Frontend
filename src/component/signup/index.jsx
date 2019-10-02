@@ -2,9 +2,9 @@
 /* eslint-disable react/button-has-type */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, navigate } from '@reach/router';
+import { Link, navigate, Redirect } from '@reach/router';
 import signup from '../../actions/signup';
-import './signup.scss';
+import '../../style/auth.scss';
 
 class Signup extends Component {
   state = {
@@ -41,7 +41,7 @@ class Signup extends Component {
       confirmPassword,
     };
     await createUser(userData);
-    return navigate('/Dash');
+    return navigate('/Dashboard');
   };
 
   render() {
@@ -53,6 +53,8 @@ class Signup extends Component {
       confirmPassword,
       message,
     } = this.state;
+    const { authLogin } = this.props;
+    if (authLogin.isLoggedIn) return <Redirect noThrow to="/Dashboard" />;
     return (
       <div className="signup">
         <div className="signup_container">
@@ -135,6 +137,7 @@ class Signup extends Component {
 }
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  authLogin: state.authLogin,
 });
 
 export default connect(

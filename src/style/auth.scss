@@ -1,5 +1,7 @@
-@import "../../style/reusablesStyles/commons.scss";
-.signup {
+// @import "../../style/reusablesStyles/commons.scss";
+@import "./reusablesStyles/commons.scss";
+.signup,
+.login {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 2fr 1fr;
