@@ -3,6 +3,7 @@ import axios from '../utils/axiosInstance';
 import tokenHelper from '../utils/auth';
 
 const LOG_IN = actionCreator('LOGIN', 'AUTH');
+const LOG_OUT = actionCreator('LOGOUT', 'LOGOUT');
 
 const login = (userData) => async (dispatch) => {
   try {
@@ -12,10 +13,14 @@ const login = (userData) => async (dispatch) => {
     const { token } = data;
     tokenHelper.setToken(token);
     dispatch({ type: LOG_IN.SUCCESS, payload: data });
-    // dispatch({ type: LOG_IN.STATUS, payload: status });
   } catch ({ response: { data: errorObj } }) {
     dispatch({ type: LOG_IN.ERROR, payload: errorObj });
   }
+};
+
+export const logout = () => (dispatch) => {
+  tokenHelper.removeToken();
+  dispatch({ type: LOG_OUT.SUCCESS });
 };
 
 export default login;
