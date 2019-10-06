@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import Logout from '../logout';
 import './header.scss';
 
 const Header = () => (
@@ -25,6 +26,9 @@ const Header = () => (
         <Link className="navbar_item" to="/dashboard">
           dashboard
         </Link>
+      </li>
+      <li>
+        <Logout />
       </li>
     </ul>
   </ul>
