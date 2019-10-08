@@ -6196,6 +6196,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-red@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-red/-/react-red-0.0.1.tgz#802bfc5d370bd5c485ca3807dc9b5aaa8f600207"
+  integrity sha512-a+Z0fkkBb0HAefEodFRPVCiI2rzATuNpuFO4pzfMaWF7lQGy7q6uw8kKhp+N3AXyY3FA76rxvNJxb1DeQlIIuA==
+
 react-redux@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.1.tgz#ce6eee1b734a7a76e0788b3309bf78ff6b34fa0a"

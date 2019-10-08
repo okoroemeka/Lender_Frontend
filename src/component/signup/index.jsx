@@ -41,7 +41,7 @@ class Signup extends Component {
       confirmPassword,
     };
     await createUser(userData);
-    return navigate('/Dashboard');
+    return navigate('/dashboard');
   };
 
   render() {
@@ -54,7 +54,7 @@ class Signup extends Component {
       message,
     } = this.state;
     const { authLogin } = this.props;
-    if (authLogin.isLoggedIn) return <Redirect noThrow to="/Dashboard" />;
+    if (authLogin.isLoggedIn) return <Redirect noThrow to="/dashboard" />;
     return (
       <div className="signup">
         <div className="signup_container">
@@ -91,7 +91,7 @@ class Signup extends Component {
                 <input
                   autoComplete="off"
                   type="text"
-                  placeholder="Enter email"
+                  placeholder="sombody@mail.com"
                   name="email"
                   value={email}
                   onChange={(e) => this.handleInputChange(e)}
