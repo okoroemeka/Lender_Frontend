@@ -30,7 +30,7 @@ class Login extends Component {
   render() {
     const { email, password, message } = this.state;
     const { authLogin } = this.props;
-    if (authLogin.isLoggedIn) return <Redirect noThrow to="/Dashboard" />;
+    if (authLogin.isLoggedIn) return <Redirect noThrow to="/dashboard" />;
 
     return (
       <div className="login">
@@ -48,7 +48,7 @@ class Login extends Component {
                 <input
                   autoComplete="off"
                   type="text"
-                  placeholder="Enter email"
+                  placeholder="Somebody@mail.com"
                   name="email"
                   value={email}
                   onChange={(e) => this.handleInputChange(e)}

@@ -1,0 +1,76 @@
+@import "../../style/reusablesStyles/commons.scss";
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  margin-top: 5%;
+  padding: 0.2rem 1rem;
+
+  @media (min-width: 550px) {
+  }
+  @media (min-width: 850px) {
+    &_button {
+      grid-column: 1/2;
+      height: 100vh;
+      box-shadow: $box-shadow;
+      display: flex;
+      flex-direction: column;
+      background-color: $primary-color;
+      button {
+        font-size: 1.2rem;
+        color: $white;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $white;
+        padding: 1.3rem 1rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &_main {
+      grid-column: 2/-1;
+      box-shadow: $box-shadow;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      .pending_loans {
+        margin-bottom: 1rem;
+      }
+      .pending_loans,
+      .approved_loans {
+        width: 100%;
+        height: 50%;
+        border: 1px solid $table-color;
+      }
+      .approved_loans,
+      .pending_loans {
+        &_table_title {
+          display: inline-block;
+          padding: 1rem;
+          font-size: 1.1rem;
+          font-weight: bolder;
+        }
+        table {
+          font-family: inherit;
+          border-collapse: collapse;
+          width: 100%;
+          height: auto;
+          thead,
+          tbody {
+            td,
+            th {
+              border: 1px solid $table-color;
+              text-align: left;
+              padding: 8px;
+            }
+            tr:nth-child(even) {
+              background-color: $table-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
