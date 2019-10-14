@@ -45,6 +45,7 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
+    "prop-types": "^15.7.2",
     "react": "15.x || 16.x || 16.4.0-alpha.0911da3",
     "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3",
     "react-red": "^0.0.1",

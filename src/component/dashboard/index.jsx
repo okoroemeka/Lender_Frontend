@@ -1,28 +1,48 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import Table from '../reusables/table';
-import loans from '../../actions/loans';
+import { loanHistory } from '../../actions/loans';
+import Modal from '../reusables/modal';
+import Button from '../reusables/Button';
+import ApplyForLoan from '../loan/ApplyForLoan';
 import './dashboard.scss';
 
 class Dashboard extends Component {
   state = {
-    loanData: [],
+    showModal: false,
   };
 
   componentDidMount = () => {
-    const { loans: getLoanHistory } = this.props;
+    const { loanHistory: getLoanHistory } = this.props;
     return getLoanHistory();
   };
 
+  toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
+
   render() {
-    const { loanHistory } = this.props;
+    const { loanHistoryData } = this.props;
+    const { showModal } = this.state;
     return (
       <div className="dashboard">
         <div className="dashboard_button">
-          <button type="button">Apply</button>
-          <button type="button">Pending request</button>
-          <button type="button">History</button>
+          <Button
+            buttonText="Apply"
+            buttonClassName="apply__loan"
+            clickHandler={this.toggleModal}
+          />
+          <Button
+            buttonText="Pending request"
+            buttonClassName="apply__loan"
+            type="button"
+          />
+          <Button
+            buttonText="History"
+            buttonClassName="apply__loan"
+            type="button"
+          />
         </div>
         <div className="dashboard_main">
           <div className="pending_loans">
@@ -34,20 +54,31 @@ class Dashboard extends Component {
             <span className="approved_loans_table_title">Loan history</span>
             <Table
               loanHistoryData={
-                loanHistory.status === 'Success' ? loanHistory.data : []
+                loanHistoryData.status === 'Success' ? loanHistoryData.data : []
               }
             />
             <div className="pagination_component">pagination</div>
           </div>
         </div>
+        {showModal && (
+          <Modal>
+            <div className="loan__container">
+              <ApplyForLoan toggleModal={this.toggleModal} />
+            </div>
+          </Modal>
+        )}
       </div>
     );
   }
 }
-const mapStateToProps = ({ loans: loanHistory }) => ({
-  loanHistory,
+const mapStateToProps = ({
+  loans: loanHistoryData,
+  loanApplication: loanApplicationData,
+}) => ({
+  loanHistoryData,
+  loanApplicationData: loanApplicationData || {},
 });
 export default connect(
   mapStateToProps,
-  { loans },
+  { loanHistory },
 )(Dashboard);

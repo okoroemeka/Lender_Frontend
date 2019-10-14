@@ -1,0 +1,26 @@
+@import "../../style/reusablesStyles/commons.scss";
+form {
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+  padding: 2rem 1rem;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  background-color: $white;
+  label {
+    display: block;
+    margin-bottom: 1rem;
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      height: 2.8rem;
+      font-size: 1rem;
+      border: none;
+      border-bottom: 1px solid $light_gray;
+      border-radius: 3px;
+      &:focus {
+        outline: 0;
+        border-color: $gray;
+      }
+    }
+  }
+}
