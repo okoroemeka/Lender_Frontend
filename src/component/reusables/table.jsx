@@ -1,27 +1,27 @@
 import React from 'react';
 
 const Table = ({
-  tableData = [
+  loanHistoryData = [
     {
       amount: 300,
-      applicationDate: '27-12-2019',
+      createdOn: '27-12-2019',
       dueDate: '27-12-2020',
       status: 'Pending',
     },
   ],
 }) => {
-  const tableBody = tableData.map((loanData, index) => (
+  const tableBody = loanHistoryData.map((loanData, index) => (
     // eslint-disable-next-line react/no-array-index-key
     <tr key={index}>
       <td>
-#
+        &#x20A6;
         {loanData.amount}
       </td>
       <td>
-        {loanData.applicationDate}
+        {loanData.createdOn.split('T')[0]}
         {' '}
       </td>
-      <td>{loanData.dueDate}</td>
+      <td>{loanData.dueDate.split('T')[0]}</td>
       <td>{loanData.status}</td>
     </tr>
   ));

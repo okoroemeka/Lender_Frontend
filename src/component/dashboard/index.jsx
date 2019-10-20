@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
@@ -23,7 +24,10 @@ class Dashboard extends Component {
   toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
 
   render() {
-    const { loanHistoryData } = this.props;
+    const {
+      loanHistoryData: { status, data },
+    } = this.props;
+    console.log('loanHistoryData===>>', data);
     const { showModal } = this.state;
     return (
       <div className="dashboard">
@@ -52,11 +56,7 @@ class Dashboard extends Component {
           </div>
           <div className="approved_loans">
             <span className="approved_loans_table_title">Loan history</span>
-            <Table
-              loanHistoryData={
-                loanHistoryData.status === 'Success' ? loanHistoryData.data : []
-              }
-            />
+            <Table loanHistoryData={status == 'Success' ? data : []} />
             <div className="pagination_component">pagination</div>
           </div>
         </div>
