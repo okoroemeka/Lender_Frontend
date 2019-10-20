@@ -20,6 +20,7 @@ const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
       return alert('Loan request successful');
     }
     alert(result.message);
+    return toggleModal();
   };
   return (
     <Form formClassName="loan__form" handleSubmit={handleSubmit}>

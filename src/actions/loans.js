@@ -6,9 +6,7 @@ const LOAN_APPLICATION = actionCreator('LOAN_APPLICATION', 'LOANS');
 
 const loanHistory = () => async (dispatch) => {
   try {
-    const {
-      data: { data },
-    } = await axios.get('/loans');
+    const { data } = await axios.get('/loans');
     dispatch({ type: LOAN_HISTORY.SUCCESS, payload: data });
   } catch ({ response: { data: errorObj } }) {
     dispatch({ type: LOAN_HISTORY.ERROR, payload: errorObj });
