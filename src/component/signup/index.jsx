@@ -58,78 +58,76 @@ class Signup extends Component {
     return (
       <div className="signup">
         <div className="signup_container">
-          <div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                this.handleSubmit();
-              }}
-            >
-              <h3>Signup</h3>
-              <div className="error">{message}</div>
-              <label htmlFor="first_name">
-                <input
-                  type="text"
-                  placeholder="Enter first name"
-                  name="firstName"
-                  value={firstName}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <label htmlFor="last_name">
-                <input
-                  type="text"
-                  placeholder="Enter last name"
-                  name="lastName"
-                  value={lastName}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <label htmlFor="email">
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="sombody@mail.com"
-                  name="email"
-                  value={email}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <label htmlFor="password">
-                <input
-                  autoComplete="off"
-                  type="password"
-                  placeholder="Enter password"
-                  name="password"
-                  value={password}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <label htmlFor="confirm_password">
-                <input
-                  className={
-                    password !== confirmPassword ? 'misMatchPassword' : ''
-                  }
-                  type="password"
-                  placeholder="Confirm password"
-                  name="confirmPassword"
-                  value={confirmPassword}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <button> Sign up</button>
-              <p>
-                already have an account?
-                <Link to="/login">login</Link>
-                {''}
-              </p>
-            </form>
-          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              this.handleSubmit();
+            }}
+          >
+            <h3>Signup</h3>
+            <div className="error">{message}</div>
+            <label htmlFor="first_name">
+              <input
+                type="text"
+                placeholder="Enter first name"
+                name="firstName"
+                value={firstName}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <label htmlFor="last_name">
+              <input
+                type="text"
+                placeholder="Enter last name"
+                name="lastName"
+                value={lastName}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <label htmlFor="email">
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="sombody@mail.com"
+                name="email"
+                value={email}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <label htmlFor="password">
+              <input
+                autoComplete="off"
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                value={password}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <label htmlFor="confirm_password">
+              <input
+                className={
+                  password !== confirmPassword ? 'misMatchPassword' : ''
+                }
+                type="password"
+                placeholder="Confirm password"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <button> Sign up</button>
+            <p>
+              already have an account?
+              <Link to="/login">login</Link>
+              {''}
+            </p>
+          </form>
         </div>
       </div>
     );

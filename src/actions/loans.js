@@ -3,6 +3,7 @@ import axios from '../utils/axiosInstance';
 
 const LOAN_HISTORY = actionCreator('LOAN_HISTORY', 'LOANS');
 const LOAN_APPLICATION = actionCreator('LOAN_APPLICATION', 'LOANS');
+const PENDING_LOAN = actionCreator('PENDING_LOAN', 'LOANS');
 
 const loanHistory = () => async (dispatch) => {
   try {
@@ -23,5 +24,15 @@ const loanApplicationAction = (loanData) => async (dispatch) => {
     return errorObj;
   }
 };
+const getPendingLoan = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get('/pending-loan');
+    dispatch({ type: PENDING_LOAN.SUCCESS, payload: data });
+    return data;
+  } catch ({ response: { data: errorObj } }) {
+    dispatch({ type: PENDING_LOAN.ERROR, payload: errorObj });
+    return errorObj;
+  }
+};
 
-export { loanHistory, loanApplicationAction };
+export { loanHistory, loanApplicationAction, getPendingLoan };

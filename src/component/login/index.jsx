@@ -2,7 +2,7 @@
 /* eslint-disable react/button-has-type */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from '@reach/router';
+import { Link, Redirect, navigate } from '@reach/router';
 import login from '../../actions/login';
 
 class Login extends Component {
@@ -25,6 +25,7 @@ class Login extends Component {
       password,
     };
     await loginUser(userData);
+    return navigate('/dashboard');
   };
 
   render() {
@@ -35,46 +36,44 @@ class Login extends Component {
     return (
       <div className="login">
         <div className="login_container">
-          <div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                this.handleSubmit();
-              }}
-            >
-              <h3>Login</h3>
-              <div className="error">{message}</div>
-              <label htmlFor="email">
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="Somebody@mail.com"
-                  name="email"
-                  value={email}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
-              <label htmlFor="password">
-                <input
-                  autoComplete="off"
-                  type="password"
-                  placeholder="Enter password"
-                  name="password"
-                  value={password}
-                  onChange={(e) => this.handleInputChange(e)}
-                  required
-                />
-              </label>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              this.handleSubmit();
+            }}
+          >
+            <h3>Login</h3>
+            <div className="error">{message}</div>
+            <label htmlFor="email">
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Somebody@mail.com"
+                name="email"
+                value={email}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
+            <label htmlFor="password">
+              <input
+                autoComplete="off"
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                value={password}
+                onChange={(e) => this.handleInputChange(e)}
+                required
+              />
+            </label>
 
-              <button> Login</button>
-              <p>
-                Don&#39;t have an account?
-                <Link to="/signup">Signup</Link>
-                {''}
-              </p>
-            </form>
-          </div>
+            <button> Login</button>
+            <p>
+              Don&#39;t have an account?
+              <Link to="/signup">Signup</Link>
+              {''}
+            </p>
+          </form>
         </div>
       </div>
     );
