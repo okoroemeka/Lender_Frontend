@@ -3,9 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  buttonText, clickHandler, buttonType, buttonClassName,
+ buttonText, clickHandler, buttonType, buttonClassName 
 }) => (
-  <button className={buttonClassName} onClick={(e)=> clickHandler(e)} type={buttonType}>
+  <button
+    className={`button ${buttonClassName}`}
+    onClick={(e) => clickHandler(e)}
+    type={buttonType}
+  >
     {buttonText}
   </button>
 );

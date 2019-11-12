@@ -2,8 +2,8 @@ import React from 'react';
 import { Router } from '@reach/router';
 import Signup from './component/signup';
 import Login from './component/login';
-import Dashboard from './component/dashboard';
 import Header from './component/header/header';
+import Protected from './component/hoc/protect';
 
 const App = () => (
   <div className="container">
@@ -11,7 +11,7 @@ const App = () => (
     <Router>
       <Signup path="/signup" />
       <Login path="/login" />
-      <Dashboard path="/dashboard" />
+      <Protected path="/dashboard" />
     </Router>
   </div>
 );

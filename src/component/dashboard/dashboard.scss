@@ -3,9 +3,9 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
-  height: 92vh;
+  height: 90vh;
   gap: 10px;
-  margin-top: 5%;
+  margin-top: 1%;
   padding: 0.2rem 1rem;
 
   @media (min-width: 550px) {
@@ -44,7 +44,9 @@
       .pending_loans,
       .approved_loans {
         width: 100%;
-        height: 50%;
+        height: auto;
+        padding-bottom: 3%;
+        margin-bottom: 3%;
         border: 1px solid $table-color;
       }
       .approved_loans,
@@ -70,6 +72,26 @@
             }
             tr:nth-child(even) {
               background-color: $table-color;
+            }
+          }
+        }
+      }
+      .pending_loans {
+        .pending_loan_card {
+          width: 25%;
+          height: 15rem;
+          border: 1px solid gray;
+          border-radius: 3px;
+          .image_container {
+            height: 50%;
+            background-color: $primary-color;
+          }
+          .pending_loan_details {
+            list-style-type: none;
+            padding: 0.4rem;
+            .details {
+              font-weight: bold;
+              color: $gray;
             }
           }
         }
