@@ -9,6 +9,7 @@ const loanHistory = () => async (dispatch) => {
   try {
     const { data } = await axios.get('/loans');
     dispatch({ type: LOAN_HISTORY.SUCCESS, payload: data });
+    return data;
   } catch ({ response: { data: errorObj } }) {
     dispatch({ type: LOAN_HISTORY.ERROR, payload: errorObj });
   }

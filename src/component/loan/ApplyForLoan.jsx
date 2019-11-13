@@ -6,7 +6,11 @@ import Button from '../reusables/Button';
 import { loanApplicationAction } from '../../actions/loans';
 import './loan.scss';
 
-const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
+const ApplyForLoan = ({
+  toggleModal,
+  loanApplicationAction: postLoan,
+  reRender,
+}) => {
   const [loanAmount, setLoan] = useState('');
   const [loanDuration, setDuration] = useState('');
   const handleSubmit = async () => {
@@ -17,6 +21,7 @@ const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
     const result = await postLoan(userData);
     if (result.status === 'Success') {
       toggleModal();
+      window.location.reload();
       return alert('Loan request successful');
     }
     alert(result.message);
