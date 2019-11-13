@@ -2,6 +2,7 @@ import actionCreator from '../actions/actionType';
 
 const initialState = {};
 const LOAN_HISTORY = actionCreator('LOAN_HISTORY', 'LOANS');
+const LOG_OUT = actionCreator('LOGOUT', 'LOGOUT');
 
 const loanHistory = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -9,6 +10,8 @@ const loanHistory = (state = initialState, { type, payload }) => {
       return { ...state, ...payload };
     case LOAN_HISTORY.ERROR:
       return { ...state, ...payload };
+    case LOG_OUT.SUCCESS:
+      return {};
     default:
       return state;
   }
