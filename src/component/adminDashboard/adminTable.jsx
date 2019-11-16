@@ -1,15 +1,19 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from '../reusables/table';
 import { loanHistory } from '../../actions/loans';
+import Modal from '../reusables/modal';
+
 import './adminDashboard.scss';
 
 const allLons = loanHistory;
 class AdminTable extends Component {
   state = {
-    // loans: [],
+    loan: {},
     isFetching: false,
+    showModal: false,
   };
 
   componentDidMount = async () => {
@@ -17,6 +21,14 @@ class AdminTable extends Component {
     this.setState(({ isFetching }) => ({ isFetching: !isFetching }));
     await retreiveAllLoan();
     this.setState(({ isFetching }) => ({ isFetching: !isFetching }));
+  };
+
+  toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
+
+  handleClick = (id, data) => {
+    const loan = data.find((element) => element._id === id);
+    this.setState((prevState) => ({ ...prevState, loan }));
+    return this.toggleModal();
   };
 
   /**
@@ -31,10 +43,19 @@ class AdminTable extends Component {
     const {
       loans: { status, data },
     } = this.props;
+    const { showModal } = this.state;
     const renderAdminTable = (
       <>
         <div className="loan__applications">Loan Applications</div>
-        <Table loanHistoryData={status === 'Success' ? data : []} />
+        <Table
+          handleClick={this.handleClick}
+          loanHistoryData={status === 'Success' ? data : []}
+        />
+        {showModal && (
+          <Modal>
+            <div>I am a modal</div>
+          </Modal>
+        )}
       </>
     );
     return renderAdminTable;
