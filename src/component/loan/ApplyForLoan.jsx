@@ -6,11 +6,7 @@ import Button from '../reusables/Button';
 import { loanApplicationAction } from '../../actions/loans';
 import './loan.scss';
 
-const ApplyForLoan = ({
-  toggleModal,
-  loanApplicationAction: postLoan,
-  reRender,
-}) => {
+const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
   const [loanAmount, setLoan] = useState('');
   const [loanDuration, setDuration] = useState('');
   const handleSubmit = async () => {

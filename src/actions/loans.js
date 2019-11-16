@@ -36,4 +36,18 @@ const getPendingLoan = () => async (dispatch) => {
   }
 };
 
-export { loanHistory, loanApplicationAction, getPendingLoan };
+const ALL_APPLICATION = actionCreator('LOAN_HISTORY', 'LOANS');
+
+const getAllLoan = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get('/loans');
+    dispatch({ type: ALL_APPLICATION.SUCCESS, payload: data });
+    return data;
+  } catch ({ response: { data: errorObj } }) {
+    dispatch({ type: ALL_APPLICATION.ERROR, payload: errorObj });
+    return errorObj;
+  }
+};
+export {
+ loanHistory, loanApplicationAction, getPendingLoan, getAllLoan 
+};
