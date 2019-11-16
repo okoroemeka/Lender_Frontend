@@ -1,0 +1,41 @@
+@import "../../style/reusablesStyles/commons.scss";
+
+.loan__applications {
+  color: $primary-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+table {
+  font-family: inherit;
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+  thead,
+  tbody {
+    td,
+    th {
+      border: 1px solid $table-color;
+      text-align: left;
+      padding: 8px;
+    }
+    tr {
+      transition: 40ms;
+      td {
+        color: $table-data;
+      }
+      &:nth-child(even) {
+        background-color: $table-color;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $table-color;
+      }
+    }
+  }
+
+  thead {
+    color: $primary-color;
+    font-weight: 300;
+  }
+}
