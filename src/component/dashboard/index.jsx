@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from '@reach/router';
 import Table from '../reusables/table';
