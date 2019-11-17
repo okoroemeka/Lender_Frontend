@@ -1,0 +1,63 @@
+@import '../../style/reusablesStyles/commons.scss';
+.modal_content_container {
+  width: 33.33%;
+  height: auto;
+  position: relative;
+  background-color: $white;
+  border-radius: 3px;
+  padding: 0.3rem 1.5rem;
+  .cancel_button {
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: absolute;
+    right: 1rem;
+    color: $gray;
+    transition: 0.4ms;
+    &:hover {
+      cursor: pointer;
+      color: $light_gray;
+    }
+  }
+  .loan_details {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2rem;
+    line-height: 1.4rem;
+    .loan_info {
+      font-weight: 600;
+      color: $gray;
+    }
+  }
+  .button_contianer {
+    margin-bottom: 1rem;
+    .approve__loan {
+      font-size: 0.9rem;
+      color: $white;
+      background-color: $primary-color;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+      transition: 0.4ms;
+      // box-shadow: $box-shadow;
+      &:hover {
+        cursor: pointer;
+        background-color: $button_hover;
+      }
+    }
+    .decline__loan {
+      font-size: 0.9rem;
+      color: $white;
+      background-color: $button_secondary_color;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+      transition: 0.4ms;
+      &:hover {
+        cursor: pointer;
+        background-color: $button_secondary_color_light;
+      }
+    }
+  }
+}
