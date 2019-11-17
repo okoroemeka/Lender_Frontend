@@ -16,7 +16,7 @@ import ApplyForLoan from '../loan/ApplyForLoan';
 import { logout } from '../../actions/login';
 import userAction from '../../actions/user';
 import PendingLoan from '../reusables/card';
-import AmdinTable from '../adminDashboard/adminTable';
+import AmdinTable from '../adminDashboard';
 import './dashboard.scss';
 
 class Dashboard extends Component {

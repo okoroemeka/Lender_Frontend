@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
@@ -14,7 +15,6 @@ const Table = ({
   handleClick = () => null,
 }) => {
   const tableBody = loanHistoryData.map(loanData => (
-    // eslint-disable-next-line react/no-array-index-key
     <tr
       key={loanData._id}
       onClick={() => handleClick(loanData._id, loanHistoryData)}
@@ -23,10 +23,7 @@ const Table = ({
         &#x20A6;
         {loanData.amount}
       </td>
-      <td>
-        {loanData.createdOn.split('T')[0]}
-        {' '}
-      </td>
+      <td>{loanData.createdOn.split('T')[0]} </td>
       <td>{loanData.dueDate.split('T')[0]}</td>
       <td>{loanData.status}</td>
     </tr>
