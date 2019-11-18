@@ -7,9 +7,10 @@ import './modalContent.scss';
 
 const ModalContent = ({
   loan: {
- amount, status, createdOn, dueDate, email 
+ amount, status, createdOn, dueDate, email, _id: loanId 
 },
   handleCloseModal,
+  handleLoanReaction,
 }) => (
   <div className="modal_content_container">
     <div
@@ -39,16 +40,20 @@ const ModalContent = ({
       </li>
     </ul>
     <div className="button_contianer">
-      <Button
-        buttonText="approve"
-        buttonClassName="approve__loan"
-        clickHandler={() => null}
-      />
-      <Button
-        buttonText="decline"
-        buttonClassName="decline__loan"
-        clickHandler={() => null}
-      />
+      {status === 'pending' && (
+        <>
+          <Button
+            buttonText="approve"
+            buttonClassName="approve__loan"
+            clickHandler={(event) => handleLoanReaction(event, loanId)}
+          />
+          <Button
+            buttonText="decline"
+            buttonClassName="decline__loan"
+            clickHandler={(event) => handleLoanReaction(event, loanId)}
+          />
+        </>
+      )}
     </div>
   </div>
 );

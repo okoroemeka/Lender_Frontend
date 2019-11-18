@@ -48,6 +48,22 @@ const getAllLoan = () => async (dispatch) => {
     return errorObj;
   }
 };
+const APPROVE_LOAN = actionCreator('APPROVE_LOAN', 'LOANS');
+const approveLoan = (loanId, status) => async (dispatch) => {
+  try {
+    const { data } = await axios.patch(`/loans/${loanId}`, status);
+    dispatch({ type: APPROVE_LOAN.SUCCESS, payload: data });
+    return data;
+  } catch ({ response: { data: errorObj } }) {
+    dispatch({ type: APPROVE_LOAN.ERROR, payload: errorObj });
+    return errorObj;
+  }
+};
+
 export {
- loanHistory, loanApplicationAction, getPendingLoan, getAllLoan 
+  loanHistory,
+  loanApplicationAction,
+  getPendingLoan,
+  getAllLoan,
+  approveLoan,
 };
