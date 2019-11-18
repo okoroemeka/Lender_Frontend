@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from '../reusables/table';
-import { loanHistory } from '../../actions/loans';
+import { loanHistory, approveLoan } from '../../actions/loans';
 import Modal from '../reusables/modal';
 import ModalContent from './modalContent';
 
@@ -26,10 +26,22 @@ class AdminTable extends Component {
 
   toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
 
-  handleClick = (id, data) => {
-    const loan = data.find((element) => element._id === id);
-    this.setState((prevState) => ({ ...prevState, loan }));
-    return this.toggleModal();
+  /**
+   * add the onclick handler for loan rejection/approval button here
+   * pass it down as a prop to the loan content component
+   * the handler should take the loan id as an argument
+   * call the action for loan reaction in the onclick handler with the loan id.
+   * */
+  handleLoanReaction = async (event, ...argument) => {
+    const {
+      target: { innerText },
+    } = event;
+    const [loanId] = argument;
+    const { approveLoan: approveLoanAction } = this.props;
+    const status = innerText === 'approve' ? 'approved' : 'rejected';
+    await approveLoanAction(loanId, { status });
+    this.toggleModal();
+    window.location.reload();
   };
 
   /**
@@ -40,12 +52,17 @@ class AdminTable extends Component {
    * the retrieved loan data should then be passed in as prop to the modal
    * the modal should have an accept and reject button.
    */
+  handleClick = (id, data) => {
+    const loan = data.find((element) => element._id === id);
+    this.setState((prevState) => ({ ...prevState, loan }));
+    return this.toggleModal();
+  };
+
   render() {
     const {
       loans: { status, data },
     } = this.props;
     const { showModal, loan } = this.state;
-    console.log(loan);
     const renderAdminTable = (
       <>
         <div className="loan__applications">Loan Applications</div>
@@ -53,24 +70,26 @@ class AdminTable extends Component {
           handleClick={this.handleClick}
           loanHistoryData={status === 'Success' ? data : []}
         />
-        {// showModal && (
-        showModal && Boolean(Object.keys(loan).length) && (
+        {showModal && Boolean(Object.keys(loan).length) && (
           <Modal>
-            <ModalContent loan={loan} handleCloseModal={this.toggleModal} />
-            {/* <div>I am a modal</div> */}
+            <ModalContent
+              handleLoanReaction={this.handleLoanReaction}
+              loan={loan}
+              handleCloseModal={this.toggleModal}
+            />
           </Modal>
-        )
-}
+        )}
       </>
     );
     return renderAdminTable;
   }
 }
 
-const mapStateToProps = ({ loans }) => ({
+const mapStateToProps = ({ loans, loanReaction }) => ({
   loans,
+  loanReaction,
 });
 export default connect(
   mapStateToProps,
-  { allLons },
+  { allLons, approveLoan },
 )(AdminTable);

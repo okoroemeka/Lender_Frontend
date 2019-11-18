@@ -6,6 +6,7 @@ import loanApplication from './loanApplication';
 import PendingLoan from './PendingLoan';
 import user from './user';
 import allLoanApplication from './allLoanApplication';
+import loanReaction from './loanReaction';
 
 export default combineReducers({
   auth: signupReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   pendingLoan: PendingLoan,
   user,
   allLoanApplication,
+  loanReaction,
 });
