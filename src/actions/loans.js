@@ -59,6 +59,20 @@ const approveLoan = (loanId, status) => async (dispatch) => {
     return errorObj;
   }
 };
+const APPROVE_AND_UNPAID_LOAN = actionCreator(
+  'APPROVE_AND_UNPAID_LOAN',
+  'LOANS',
+);
+const approvedButUnpaidLoan = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get('/approved&unpaid');
+    dispatch({ type: APPROVE_AND_UNPAID_LOAN.SUCCESS, payload: data });
+    return data;
+  } catch ({ response: { data: errorObj } }) {
+    dispatch({ type: APPROVE_AND_UNPAID_LOAN.ERROR, payload: errorObj });
+    return errorObj;
+  }
+};
 
 export {
   loanHistory,
@@ -66,4 +80,5 @@ export {
   getPendingLoan,
   getAllLoan,
   approveLoan,
+  approvedButUnpaidLoan,
 };

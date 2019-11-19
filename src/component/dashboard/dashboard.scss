@@ -1,4 +1,4 @@
-@import "../../style/reusablesStyles/commons.scss";
+@import '../../style/reusablesStyles/commons.scss';
 .dashboard {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -45,7 +45,7 @@
       .approved_loans {
         width: 100%;
         height: auto;
-        padding-bottom: 3%;
+        padding: 1rem;
         margin-bottom: 3%;
         border: 1px solid $table-color;
       }
@@ -53,7 +53,7 @@
       .pending_loans {
         &_table_title {
           display: inline-block;
-          padding: 1rem;
+          padding: 1rem 0;
           font-size: 1.1rem;
           font-weight: bolder;
         }
@@ -90,48 +90,40 @@
             font-weight: 300;
           }
         }
-
-        // table {
-        //   font-family: inherit;
-        //   border-collapse: collapse;
-        //   width: 100%;
-        //   height: auto;
-        //   thead,
-        //   tbody {
-        //     td,
-        //     th {
-        //       border: 1px solid $table-color;
-        //       text-align: left;
-        //       padding: 8px;
-        //     }
-        //     tr {
-        //       &:nth-child(even) {
-        //         background-color: $table-color;
-        //       }
-        //       &:hover {
-        //         cursor: pointer;
-        //         // background-color: brown;
-        //       }
-        //     }
-        //   }
-        // }
       }
       .pending_loans {
         .pending_loan_card {
           width: 25%;
-          height: 15rem;
-          border: 1px solid gray;
+          height: auto;
+          border: 1px solid $primary-color;
           border-radius: 3px;
-          .image_container {
-            height: 50%;
-            background-color: $primary-color;
-          }
+          padding: 0.3rem;
+          box-shadow: $box-shadow;
+          // .image_container {
+          //   height: 5rem;
+          //   background-color: $primary-color;
+          // }
           .pending_loan_details {
             list-style-type: none;
-            padding: 0.4rem;
+            padding: 0;
             .details {
               font-weight: bold;
               color: $gray;
+            }
+          }
+          .repay_loan {
+            font-size: 0.9rem;
+            color: $white;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.4rem;
+            border: none;
+            border-radius: 5px;
+            background-color: $button_secondary_color;
+            transition: 0.5ms;
+            box-shadow: $box-shadow;
+            &:hover {
+              cursor: pointer;
+              background-color: $button_secondary_color_light;
             }
           }
         }

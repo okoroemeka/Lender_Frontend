@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 const Button = ({ buttonText, clickHandler, buttonType, buttonClassName }) => (
   <button
     className={`button ${buttonClassName}`}
-    // onClick={(e) => clickHandler(e)}
     onClick={clickHandler}
     type={buttonType}
   >
