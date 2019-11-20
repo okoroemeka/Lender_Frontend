@@ -1,0 +1,62 @@
+@import '../../style/reusablesStyles/commons.scss';
+.loan__container {
+  width: 95%;
+}
+.loan__repayment__container {
+  .repay__loan__form {
+    border-radius: 3px;
+    width: 100%;
+    .loan {
+      &__repayment__details {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      &__balance {
+        display: inline-block;
+        background-color: $button_secondary_color_light;
+        padding: 0.3rem 1.2rem;
+        color: $white;
+        border-radius: 3px;
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+      }
+      &__balance:hover {
+        cursor: pointer;
+      }
+      &__balance__text {
+        color: $primary-color;
+        font-weight: 600;
+        margin-right: 0.5rem;
+      }
+    }
+    label {
+      .form__input__number::-webkit-inner-spin-button,
+      .form__input__number::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+      .naira_symbol {
+        color: $gray;
+      }
+      .form__input__number {
+        width: 97%;
+      }
+    }
+    .cancel__button {
+      background-color: $white;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      margin-right: 0.8rem;
+    }
+  }
+}
+@media (min-width: 550px) {
+  .loan__container {
+    width: 70%;
+  }
+}
+@media (min-width: 850px) {
+  .loan__container {
+    width: 45%;
+  }
+}

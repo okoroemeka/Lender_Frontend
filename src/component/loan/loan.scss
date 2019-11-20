@@ -1,6 +1,10 @@
-@import "../../style/reusablesStyles/commons.scss";
+@import '../../style/reusablesStyles/commons.scss';
+.loan__container {
+  width: 95%;
+}
 .loan__form {
   border-radius: 5px;
+  width: 100%;
   h3 {
     color: $primary-color;
   }
@@ -8,6 +12,15 @@
     .form__input__number::-webkit-inner-spin-button,
     .form__input__number::-webkit-outer-spin-button {
       -webkit-appearance: none;
+    }
+    .form__input__number {
+      width: 96%;
+    }
+    #loan__duration {
+      margin-left: 2%;
+    }
+    .naira_symbol {
+      color: $gray;
     }
   }
   &__button {
@@ -31,5 +44,15 @@
     &:hover {
       border: 0.5px solid $primary-color;
     }
+  }
+}
+@media (min-width: 550px) {
+  .loan__container {
+    width: 70%;
+  }
+}
+@media (min-width: 850px) {
+  .loan__container {
+    width: 40%;
   }
 }

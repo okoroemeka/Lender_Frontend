@@ -27,8 +27,10 @@ const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
     <Form formClassName="loan__form" handleSubmit={handleSubmit}>
       <h3>Apply</h3>
       <label htmlFor="loanApplication">
+        <span className="naira_symbol">&#x20A6;</span>
         <input
           className="form__input__number"
+          id="loan__form__amount"
           autoComplete="off"
           type="number"
           placeholder="Enter amount"
@@ -42,7 +44,9 @@ const ApplyForLoan = ({ toggleModal, loanApplicationAction: postLoan }) => {
       <label htmlFor="duration">
         <input
           className="form__input__number"
+          id="loan__duration"
           type="number"
+          autoComplete="off"
           placeholder="Enter loan duration in months"
           name="duration"
           value={loanDuration}

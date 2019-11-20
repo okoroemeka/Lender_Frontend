@@ -9,7 +9,7 @@ import {
   loanHistory,
   getPendingLoan,
   loanApplicationAction,
-  approvedButUnpaidLoan,
+  approvedButUnpaidLoan
 } from '../../actions/loans';
 import Modal from '../reusables/modal';
 import Button from '../reusables/Button';
@@ -19,12 +19,14 @@ import userAction from '../../actions/user';
 import PendingLoan from '../reusables/card';
 import AmdinTable from '../adminDashboard';
 import UnpaidLoan from './loanCard';
+import LoanRepay from '../loanRepay';
 import './dashboard.scss';
 
 class Dashboard extends Component {
   state = {
     showModal: false,
     user: this.props.user,
+    isApplyLoan: false
   };
 
   componentDidMount = async () => {
@@ -32,18 +34,35 @@ class Dashboard extends Component {
       loanHistory: getLoanHistory,
       getPendingLoan: getPendingLoanAction,
       userAction: getUser,
-      approvedButUnpaidLoan: unPaidLoanAction,
+      approvedButUnpaidLoan: unPaidLoanAction
     } = this.props;
     const user = await getUser();
     await getPendingLoanAction();
     await getLoanHistory();
     await unPaidLoanAction();
-    return this.setState((prevState) => ({ ...prevState, user }));
+    return this.setState(prevState => ({ ...prevState, user }));
   };
 
-  toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
+  toggleModal = () =>
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
 
-  pendingLoan = (pendingLoanData) => (
+  toggleApplyLoanContent = () => this.setState(() => ({ isApplyLoan: true }));
+
+  applyForLoanToggleModal = () => {
+    this.toggleApplyLoanContent();
+    this.toggleModal();
+  };
+
+  toggleApplyUnpaidLoanContent = () => {
+    this.setState(() => ({ isApplyLoan: false }));
+  };
+
+  toggleModalForUnPaidLoan = () => {
+    this.toggleApplyUnpaidLoanContent();
+    this.toggleModal();
+  };
+
+  pendingLoan = pendingLoanData => (
     <div className="pending_loans unpaid_loans">
       <span className="pending_loans_table_title">Pending request</span>
       <PendingLoan className="pending_loan_card">
@@ -62,7 +81,7 @@ class Dashboard extends Component {
     </div>
   );
 
-  dashboardButton = (isAdmin) => (
+  dashboardButton = isAdmin => (
     <>
       {isAdmin ? (
         <>
@@ -81,7 +100,7 @@ class Dashboard extends Component {
         <Button
           buttonText="Apply"
           buttonClassName="apply__loan"
-          clickHandler={this.toggleModal}
+          clickHandler={this.applyForLoanToggleModal}
         />
       )}
     </>
@@ -100,9 +119,9 @@ class Dashboard extends Component {
       loanHistoryData: { status, data, message },
       logout: userLogout,
       pendingLoan: { data: pendingLoanData },
-      unPaidLoan,
+      unPaidLoan
     } = this.props;
-    const { showModal, user } = this.state;
+    const { showModal, user, isApplyLoan } = this.state;
     if (message == 'jwt expired') {
       userLogout();
       return <Redirect to="/login" />;
@@ -119,17 +138,25 @@ class Dashboard extends Component {
           {!user.isAdmin ? (
             <>
               {unPaidLoan && (
-                <UnpaidLoan
-                  data={unPaidLoan}
-                  cardTitle="Loan"
-                  needButton
-                  buttonText="repay"
-                  buttonClassName="repay_loan"
-                />
+                <>
+                  <UnpaidLoan
+                    data={unPaidLoan}
+                    cardTitle="Loan"
+                    needButton
+                    buttonText="repay"
+                    buttonClassName="repay_loan"
+                    handleButtonClick={this.toggleModalForUnPaidLoan}
+                  />
+                  <Button
+                    buttonText="Apply for loan"
+                    buttonClassName="apply__loan__mobile"
+                    clickHandler={this.applyForLoanToggleModal}
+                  />
+                </>
               )}
-              {Boolean(pendingLoanData)
-                && Boolean(pendingLoanData.length)
-                && this.pendingLoan(pendingLoanData, unPaidLoan)}
+              {Boolean(pendingLoanData) &&
+                Boolean(pendingLoanData.length) &&
+                this.pendingLoan(pendingLoanData, unPaidLoan)}
               {Boolean(data) && this.approvedLoan(status, data)}
             </>
           ) : (
@@ -139,10 +166,11 @@ class Dashboard extends Component {
         {showModal && (
           <Modal>
             <div className="loan__container">
-              <ApplyForLoan
-                // reRender={this.causeRerender}
-                toggleModal={this.toggleModal}
-              />
+              {isApplyLoan ? (
+                <ApplyForLoan toggleModal={this.toggleModal} />
+              ) : (
+                <LoanRepay data={unPaidLoan} toggleModal={this.toggleModal} />
+              )}
             </div>
           </Modal>
         )}
@@ -156,13 +184,13 @@ const mapStateToProps = ({
   loanApplication: loanApplicationData,
   pendingLoan,
   user,
-  approvedButUnpaidLoan: { data },
+  approvedButUnpaidLoan: { data }
 }) => ({
   loanHistoryData,
   loanApplicationData: loanApplicationData || {},
   pendingLoan,
   user: user || {},
-  unPaidLoan: data,
+  unPaidLoan: data
 });
 export default connect(
   mapStateToProps,
@@ -172,6 +200,6 @@ export default connect(
     getPendingLoan,
     loanApplicationAction,
     userAction: userAction.getUser,
-    approvedButUnpaidLoan,
-  },
+    approvedButUnpaidLoan
+  }
 )(Dashboard);
