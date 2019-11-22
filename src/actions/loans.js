@@ -74,6 +74,21 @@ const approvedButUnpaidLoan = () => async (dispatch) => {
   }
 };
 
+const REPAY_LOAN = actionCreator('REPAY_LOAN', 'LOANS');
+const repayLoan = (loanDetails, loanId) => async (dispatch) => {
+  try {
+    const { data } = await axios.post(
+      `/loans/${loanId}/repayment`,
+      loanDetails,
+    );
+    dispatch({ type: REPAY_LOAN.SUCCESS, payload: data });
+    return data;
+  } catch ({ response: { data: errorObj } }) {
+    dispatch({ type: REPAY_LOAN.ERROR, payload: errorObj });
+    return errorObj;
+  }
+};
+
 export {
   loanHistory,
   loanApplicationAction,
@@ -81,4 +96,5 @@ export {
   getAllLoan,
   approveLoan,
   approvedButUnpaidLoan,
+  repayLoan,
 };

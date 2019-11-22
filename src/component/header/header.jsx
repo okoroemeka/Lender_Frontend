@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { connect } from 'react-redux';
 import Logout from '../logout';
+import MenuBar from '../menu/menuBar';
 import './header.scss';
 
 /**
@@ -54,9 +55,12 @@ const Header = ({ authLogin }) => (
         ? navItemsToDisplayWhenLoggedIn()
         : navItemsToDisplayWhenLoggedOut()}
     </ul>
+    <li className="navbar__second__item">
+      <MenuBar />
+    </li>
   </ul>
 );
 const mapStateToProps = (state = []) => ({
-  authLogin: state.authLogin,
+  authLogin: state.authLogin
 });
 export default connect(mapStateToProps)(Header);

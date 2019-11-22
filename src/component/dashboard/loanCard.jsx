@@ -7,6 +7,7 @@ const UnpaidLoan = ({
   cardTitle,
   needButton,
   buttonText,
+  handleButtonClick,
   // buttonType,
   buttonClassName,
 }) => (
@@ -27,9 +28,17 @@ const UnpaidLoan = ({
           <span className="details">Balance: &nbsp;&#x20A6;</span>
           {data[0].balance}
         </li>
+        <li>
+          <span className="details">Due Date:&nbsp;</span>
+          {data[0].dueDate.split('T')[0]}
+        </li>
       </ul>
       {needButton && (
-        <Button buttonText={buttonText} buttonClassName={buttonClassName} />
+        <Button
+          buttonText={buttonText}
+          buttonClassName={buttonClassName}
+          clickHandler={handleButtonClick}
+        />
       )}
     </UnpaidLoanCard>
   </div>

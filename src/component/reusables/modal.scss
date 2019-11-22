@@ -1,4 +1,4 @@
-@import "../../style/reusablesStyles/commons.scss";
+@import '../../style/reusablesStyles/commons.scss';
 .modal_container {
   display: flex;
   width: 100%;
@@ -8,8 +8,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: center;
-  .loan__container{
-    width: 40%;
-    height: auto;
-  }
+  // .loan__container{
+  //   width: 40%;
+  //   height: auto;
+  // }
 }
