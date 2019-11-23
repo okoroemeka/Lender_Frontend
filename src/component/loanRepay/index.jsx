@@ -9,9 +9,9 @@ import './loanRepay.scss';
 const LoanRepayment = ({
   data: [loanData],
   toggleModal,
-  repayLoan: repayLoanAction
+  repayLoan: repayLoanAction,
 }) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const handleSubmit = async () => {
     const repaymentDetails = { amount };
     const { _id: loanId } = loanData;
@@ -24,7 +24,7 @@ const LoanRepayment = ({
     window.location.reload();
   };
   console.log('loanData', loanData);
-  const handleClickOnLoanRepayment = async e => {
+  const handleClickOnLoanRepayment = async (e) => {
     const { innerText } = e.target;
     const formatedAmount = Number(innerText.slice(1));
     await setAmount(formatedAmount);
@@ -58,7 +58,7 @@ const LoanRepayment = ({
         </div>
 
         <label htmlFor="loanRepayment">
-          <span className="naira_symbol">&#x20A6;</span>
+          <span className="naira__symbol">&#x20A6;</span>
           <input
             className="form__input__number"
             autoComplete="off"
@@ -66,7 +66,7 @@ const LoanRepayment = ({
             placeholder="Enter amount"
             name="email"
             value={amount}
-            onChange={e => setAmount(e.target.value)}
+            onChange={(e) => setAmount(e.target.value)}
             required
             min="0"
             max={loanData.balance}
@@ -78,16 +78,19 @@ const LoanRepayment = ({
           buttonText="Cancel"
           clickHandler={toggleModal}
         />
-        <Button buttonClassName="loan__form__button" buttonText="Complete" />
+        <Button
+          buttonClassName="loan__form__button complete__button"
+          buttonText="Complete"
+        />
       </Form>
     </div>
   );
 };
 
 const mapStateToProps = ({ loanRepayment }) => ({
-  loanRepayment
+  loanRepayment,
 });
 export default connect(
   mapStateToProps,
-  { repayLoan }
+  { repayLoan },
 )(LoanRepayment);

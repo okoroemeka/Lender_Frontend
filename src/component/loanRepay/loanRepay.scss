@@ -35,11 +35,11 @@
       .form__input__number::-webkit-outer-spin-button {
         -webkit-appearance: none;
       }
-      .naira_symbol {
+      .naira__symbol {
         color: $gray;
       }
       .form__input__number {
-        width: 97%;
+        width: 96%;
       }
     }
     .cancel__button {
@@ -47,6 +47,9 @@
       color: $primary-color;
       border: 1px solid $primary-color;
       margin-right: 0.8rem;
+    }
+    .complete__button {
+      outline: none;
     }
   }
 }
