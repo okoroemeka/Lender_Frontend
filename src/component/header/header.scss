@@ -1,55 +1,120 @@
 @import '../../style/reusablesStyles/commons.scss';
 .navbar {
   color: $primary-color;
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  height: 7vh;
+  height: auto;
   padding: 0 0.8rem;
   margin: 0;
   align-items: center;
   list-style-type: none;
   text-transform: capitalize;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  .title {
-    text-decoration: none;
-    font-size: 1.45rem;
-    font-weight: bold;
-    color: $primary-color;
+  .title__container {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0;
+    .title {
+      text-decoration: none;
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: $primary-color;
+    }
   }
-
-  &_items {
+  .items__container {
+    display: block;
+    width: 100%;
+  }
+  .remove__menubar {
     display: none;
-    justify-content: space-between;
+  }
+  &_items {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
     list-style-type: none;
     font-size: 1.05rem;
     font-weight: bold;
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    .navbar_item_container {
+      margin: 0.5rem;
+    }
     .navbar_item {
-      padding: 1rem;
       text-decoration: none;
       color: $primary-color;
+      font-weight: normal;
+      margin: 1rem 0;
     }
     .logout {
       cursor: pointer;
     }
   }
   &__second__item {
-    margin-left: auto;
+    position: absolute;
+    right: 3%;
+    top: 10%;
+    .cancel__hanbuger {
+      color: $gray;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
   }
   @media (min-width: 550px) {
+    height: 7vh;
+    .title__container {
+      width: auto;
+      margin-top: 0;
+    }
+    .items__container {
+      display: block;
+      width: auto;
+      margin: 0;
+    }
     justify-content: space-between;
     padding: 0 0.5rem;
     &_items {
       display: flex;
+      flex-direction: row;
+      .navbar_item_container {
+        width: auto;
+      }
+      .navbar_item {
+        padding: 1rem;
+        font-weight: 550;
+      }
     }
     &__second__item {
       display: none;
     }
   }
   @media (min-width: 850px) {
+    height: 7vh;
     justify-content: space-between;
     padding: 0 0.5rem;
+    .title__container {
+      width: auto;
+      margin-top: 0;
+    }
+    .items__container {
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+
     &_items {
       display: flex;
+      flex-direction: row;
+      .navbar_item_container {
+        width: auto;
+      }
+      .navbar_item {
+        padding: 1rem;
+        font-weight: 550;
+      }
     }
     &__second__item {
       display: none;
