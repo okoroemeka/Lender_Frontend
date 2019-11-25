@@ -1,0 +1,95 @@
+@import '../../style/reusablesStyles/commons.scss';
+.landing__page__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  background-image: url(../../images/business-woman.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .landing__page__overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    .details__area {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      // padding: 40% 0;
+    }
+    .title__container {
+      color: $white;
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      // margin-top: 12rem;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .button__container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      padding: 0 0.8rem;
+      .login__button,
+      .signup__button {
+        color: $white;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .login__button {
+        background-color: $primary-color;
+        box-shadow: $box-shadow;
+        margin-bottom: 0.5rem;
+      }
+      .signup__button {
+        background-color: $button_secondary_color;
+      }
+    }
+  }
+  @media (min-width: 550px) {
+    .landing__page__overlay {
+      .details__area {
+        // padding: 20% 0;
+      }
+      .title__container {
+        // margin-top: 17rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      .button__container {
+        .login__button,
+        .signup__button {
+          width: 15rem;
+        }
+        .login__button {
+          margin-right: 0.5rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  @media (min-width: 850px) {
+    .landing__page__overlay {
+      .details__area {
+        // padding: 15% 0;
+      }
+      .title__container {
+        // margin-top: 20rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}
