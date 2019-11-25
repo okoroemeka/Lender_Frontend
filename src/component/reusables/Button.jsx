@@ -15,7 +15,7 @@ const Button = ({
 );
 
 Button.defaultProps = {
-  clickHandler: () => {},
+  clickHandler: () => null,
   buttonType: 'submit',
   buttonClassName: '',
 };
