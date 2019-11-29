@@ -1,4 +1,4 @@
-@import '../../style/reusablesStyles/commons.scss';
+@import "../../style/reusablesStyles/commons.scss";
 .loan__container {
   width: 95%;
 }
@@ -29,6 +29,9 @@
         font-weight: 600;
         margin-right: 0.5rem;
       }
+    }
+    .error__message {
+      color: $red;
     }
     label {
       .form__input__number::-webkit-inner-spin-button,

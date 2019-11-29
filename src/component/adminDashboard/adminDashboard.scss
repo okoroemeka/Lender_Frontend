@@ -1,4 +1,4 @@
-@import '../../style/reusablesStyles/commons.scss';
+@import "../../style/reusablesStyles/commons.scss";
 
 .loan__applications {
   color: $primary-color;
@@ -29,7 +29,6 @@ table {
       }
       &:hover {
         cursor: pointer;
-        background-color: $table-color;
       }
     }
   }
