@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import Form from '../reusables/Form';
 import Button from '../reusables/Button';
-import { repayLoan } from '../../actions/loans';
 import './loanRepay.scss';
 
 const LoanRepayment = ({
@@ -12,18 +10,18 @@ const LoanRepayment = ({
   repayLoan: repayLoanAction,
 }) => {
   const [amount, setAmount] = useState();
+  /**
+   * handles repayment of loan.
+   */
   const handleSubmit = async () => {
     const repaymentDetails = { amount };
     const { _id: loanId } = loanData;
-    const response = await repayLoanAction(repaymentDetails, loanId);
-    if (response.status === 'Error') {
-      return alert('Error occured, please try Again');
-    }
-    toggleModal();
-    alert(`${response.status}`);
-    window.location.reload();
+    await repayLoanAction(repaymentDetails, loanId);
   };
-  console.log('loanData', loanData);
+  /**
+   * Handles updating of loan amount in state
+   * @param {*} event
+   */
   const handleClickOnLoanRepayment = async (e) => {
     const { innerText } = e.target;
     const formatedAmount = Number(innerText.slice(1));
@@ -56,7 +54,9 @@ const LoanRepayment = ({
             </span>
           </div>
         </div>
-
+        <div className="error__message">
+          {amount <= 0 ? 'Invalid amount' : null}
+        </div>
         <label htmlFor="loanRepayment">
           <span className="naira__symbol">&#x20A6;</span>
           <input
@@ -66,6 +66,7 @@ const LoanRepayment = ({
             placeholder="Enter amount"
             name="email"
             value={amount}
+            step="any"
             onChange={(e) => setAmount(e.target.value)}
             required
             min="0"
@@ -81,16 +82,11 @@ const LoanRepayment = ({
         <Button
           buttonClassName="loan__form__button complete__button"
           buttonText="Complete"
+          disabled={!(amount > 0)}
         />
       </Form>
     </div>
   );
 };
 
-const mapStateToProps = ({ loanRepayment }) => ({
-  loanRepayment,
-});
-export default connect(
-  mapStateToProps,
-  { repayLoan },
-)(LoanRepayment);
+export default LoanRepayment;

@@ -18,19 +18,19 @@ const UnpaidLoan = ({
       <ul className="pending_loan_details">
         <li>
           <span className="details">Amount:&nbsp;&#x20A6;</span>
-          {data[0].amount}
+          {data.amount}
         </li>
         <li>
           <span className="details">Status: &nbsp;</span>
-          {data[0].status}
+          {data.status}
         </li>
         <li>
           <span className="details">Balance: &nbsp;&#x20A6;</span>
-          {data[0].balance}
+          {data.balance}
         </li>
         <li>
           <span className="details">Due Date:&nbsp;</span>
-          {data[0].dueDate.split('T')[0]}
+          {data.dueDate.split('T')[0]}
         </li>
       </ul>
       {needButton && (
