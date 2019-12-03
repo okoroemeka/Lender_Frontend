@@ -199,11 +199,7 @@ class Dashboard extends Component {
                 {Boolean(data) && approvedLoan(status, data)}
               </>
             ) : (
-              <AmdinTable
-                updateMessageForAdminLoanReaction={
-                  this.updateMessageForAdminLoanReaction
-                }
-              />
+              <AmdinTable />
             )}
           </div>
           {showModal && (
