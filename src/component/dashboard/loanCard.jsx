@@ -8,7 +8,6 @@ const UnpaidLoan = ({
   needButton,
   buttonText,
   handleButtonClick,
-  // buttonType,
   buttonClassName,
 }) => (
   <div className="pending_loans unpaid_loans">

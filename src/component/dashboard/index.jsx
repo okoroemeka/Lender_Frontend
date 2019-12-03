@@ -31,7 +31,7 @@ class Dashboard extends Component {
     showNotification: false,
     message: '',
     unPaidLoanData: [],
-    loanHistoryData: {},
+    loanHistoryData: { status: '', data: [] },
   };
 
   componentDidMount = async () => {
@@ -48,7 +48,10 @@ class Dashboard extends Component {
     this.setState((prevState) => ({
       ...prevState,
       user,
-      loanHistoryData,
+      loanHistoryData:
+        loanHistoryData.status === 'Error'
+          ? { status: '', data: [] }
+          : loanHistoryData,
       unPaidLoanData: data || [],
     }));
   };
@@ -71,7 +74,7 @@ class Dashboard extends Component {
       showNotification: true,
     }));
     const res = await this.props.approvedButUnpaidLoan();
-    this.setState((prevState) => ({
+    return this.setState((prevState) => ({
       ...prevState,
       unPaidLoanData: res.data || [],
     }));
@@ -84,14 +87,12 @@ class Dashboard extends Component {
     const result = await this.props.loanApplicationAction(loanDetails);
     if (result.status === 'Success') {
       this.toggleModal();
+      const loanHistoryData = await this.props.loanHistory();
       return this.setState((prevState) => ({
         ...prevState,
         message: 'Your loan application was successful',
         showNotification: true,
-        loanHistoryData: {
-          status: prevState.loanHistoryData.status,
-          data: [...prevState.loanHistoryData.data, result.data],
-        },
+        loanHistoryData,
       }));
     }
     return this.setState((prevState) => ({
@@ -132,6 +133,11 @@ class Dashboard extends Component {
     }));
   };
 
+  /**
+   * Set message for admin loan reaction
+   */
+  updateMessageForAdminLoanReaction = (message) => this.setState((prevState) => ({ ...prevState, message }));
+
   render() {
     const {
       logout: userLogout,
@@ -147,7 +153,7 @@ class Dashboard extends Component {
       message: messageFromState,
       showNotification,
     } = this.state;
-    if (message == 'jwt expired') {
+    if (!user || message == 'jwt expired') {
       userLogout();
       return <Redirect to="/login" />;
     }
@@ -193,7 +199,11 @@ class Dashboard extends Component {
                 {Boolean(data) && approvedLoan(status, data)}
               </>
             ) : (
-              <AmdinTable />
+              <AmdinTable
+                updateMessageForAdminLoanReaction={
+                  this.updateMessageForAdminLoanReaction
+                }
+              />
             )}
           </div>
           {showModal && (
