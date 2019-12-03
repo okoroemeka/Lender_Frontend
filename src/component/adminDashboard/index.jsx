@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
@@ -13,6 +14,7 @@ const allLons = loanHistory;
 class AdminTable extends Component {
   state = {
     loan: {},
+    loans: this.props.loans,
     isFetching: false,
     showModal: false,
   };
@@ -20,8 +22,11 @@ class AdminTable extends Component {
   componentDidMount = async () => {
     const { allLons: retreiveAllLoan } = this.props;
     this.setState(({ isFetching }) => ({ isFetching: !isFetching }));
-    await retreiveAllLoan();
-    this.setState(({ isFetching }) => ({ isFetching: !isFetching }));
+    const response = await retreiveAllLoan();
+    this.setState(({ isFetching }) => ({
+      isFetching: !isFetching,
+      loans: response,
+    }));
   };
 
   toggleModal = () => this.setState(({ showModal }) => ({ showModal: !showModal }));
@@ -37,11 +42,28 @@ class AdminTable extends Component {
       target: { innerText },
     } = event;
     const [loanId] = argument;
-    const { approveLoan: approveLoanAction } = this.props;
+    const {
+      approveLoan: approveLoanAction,
+      allLons: retreiveAllLoan,
+      updateMessageForAdminLoanReaction,
+    } = this.props;
     const status = innerText === 'approve' ? 'approved' : 'rejected';
-    await approveLoanAction(loanId, { status });
-    this.toggleModal();
-    window.location.reload();
+    const { status: responseStatus, message } = await approveLoanAction(
+      loanId,
+      {
+        status,
+      },
+    );
+    const response = await retreiveAllLoan();
+    if (responseStatus === 'Success') {
+      this.setState((prevState) => ({ ...prevState, loans: response }));
+      updateMessageForAdminLoanReaction(
+        `Loan status(${status}) was updated successfully`,
+      );
+      return this.toggleModal();
+    }
+    updateMessageForAdminLoanReaction(message);
+    return this.toggleModal();
   };
 
   /**
@@ -60,9 +82,10 @@ class AdminTable extends Component {
 
   render() {
     const {
+      showModal,
+      loan,
       loans: { status, data },
-    } = this.props;
-    const { showModal, loan } = this.state;
+    } = this.state;
     const renderAdminTable = (
       <>
         <div className="loan__applications">Loan Applications</div>

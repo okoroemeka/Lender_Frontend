@@ -12,6 +12,7 @@ const loanHistory = () => async (dispatch) => {
     return data;
   } catch ({ response: { data: errorObj } }) {
     dispatch({ type: LOAN_HISTORY.ERROR, payload: errorObj });
+    return errorObj;
   }
 };
 

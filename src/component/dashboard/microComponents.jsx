@@ -1,9 +1,9 @@
-import React from "react";
-import Button from "../reusables/Button";
-import Table from "../reusables/table";
-import PendingLoan from "../reusables/card";
+import React from 'react';
+import Button from '../reusables/Button';
+import Table from '../reusables/table';
+import PendingLoan from '../reusables/card';
 
-const pendingLoan = pendingLoanData => (
+const pendingLoan = (pendingLoanData) => (
   <div className="pending_loans unpaid_loans">
     <span className="pending_loans_table_title">Pending request</span>
     <PendingLoan className="pending_loan_card">
@@ -25,7 +25,7 @@ const pendingLoan = pendingLoanData => (
 const dashboardButton = (
   isAdmin,
   applyForLoanToggleModal,
-  disabled = false
+  disabled = false,
 ) => (
   <>
     {isAdmin ? (
@@ -55,7 +55,7 @@ const dashboardButton = (
 const approvedLoan = (status, data) => (
   <div className="approved_loans">
     <span className="approved_loans_table_title">Loan history</span>
-    <Table loanHistoryData={status == "Success" ? data : []} />
+    <Table loanHistoryData={status === 'Success' ? data : []} />
     <div className="pagination_component">pagination</div>
   </div>
 );
