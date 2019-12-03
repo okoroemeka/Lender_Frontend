@@ -4,25 +4,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from '../reusables/table';
-import { loanHistory, approveLoan } from '../../actions/loans';
+import { loanHistory, approveLoan, getPendingLoan } from '../../actions/loans';
 import Modal from '../reusables/modal';
 import ModalContent from './modalContent';
 
 import './adminDashboard.scss';
 
-const allLons = loanHistory;
+const allLoans = loanHistory;
 class AdminTable extends Component {
   state = {
     loan: {},
     loans: this.props.loans,
+    pendingLoan: this.props.pendingLoan,
     isFetching: false,
     showModal: false,
   };
 
   componentDidMount = async () => {
-    const { allLons: retreiveAllLoan } = this.props;
+    const {
+      allLoans: retreiveAllLoan,
+      getPendingLoan: getPendingLoanAction,
+    } = this.props;
     this.setState(({ isFetching }) => ({ isFetching: !isFetching }));
     const response = await retreiveAllLoan();
+    await getPendingLoanAction();
     this.setState(({ isFetching }) => ({
       isFetching: !isFetching,
       loans: response,
@@ -44,25 +49,20 @@ class AdminTable extends Component {
     const [loanId] = argument;
     const {
       approveLoan: approveLoanAction,
-      allLons: retreiveAllLoan,
-      updateMessageForAdminLoanReaction,
+      allLoans: retreiveAllLoan,
+      getPendingLoan: getPendingLoanAction,
     } = this.props;
     const status = innerText === 'approve' ? 'approved' : 'rejected';
-    const { status: responseStatus, message } = await approveLoanAction(
-      loanId,
-      {
-        status,
-      },
-    );
-    const response = await retreiveAllLoan();
-    if (responseStatus === 'Success') {
-      this.setState((prevState) => ({ ...prevState, loans: response }));
-      updateMessageForAdminLoanReaction(
-        `Loan status(${status}) was updated successfully`,
-      );
-      return this.toggleModal();
-    }
-    updateMessageForAdminLoanReaction(message);
+    await approveLoanAction(loanId, {
+      status,
+    });
+    const retreiveAllLoanResponse = await retreiveAllLoan();
+    const getPendingLoanResponse = await getPendingLoanAction();
+    this.setState((prevState) => ({
+      ...prevState,
+      loans: retreiveAllLoanResponse,
+      pendingLoan: getPendingLoanResponse,
+    }));
     return this.toggleModal();
   };
 
@@ -85,10 +85,21 @@ class AdminTable extends Component {
       showModal,
       loan,
       loans: { status, data },
+      pendingLoan: { data: pendingLoanData },
     } = this.state;
     const renderAdminTable = (
       <>
-        <div className="loan__applications">Loan Applications</div>
+        {!pendingLoanData || !pendingLoanData.length ? null : (
+          <>
+            <div className="loan__applications">Pending Loan Application</div>
+            <Table
+              handleClick={this.handleClick}
+              loanHistoryData={pendingLoanData}
+            />
+            <div className="loan__applications">Loan Applications</div>
+          </>
+        )}
+
         <Table
           handleClick={this.handleClick}
           loanHistoryData={status === 'Success' ? data : []}
@@ -108,11 +119,16 @@ class AdminTable extends Component {
   }
 }
 
-const mapStateToProps = ({ loans, loanReaction }) => ({
+const mapStateToProps = ({
   loans,
   loanReaction,
+  pendingLoan: pendingLoanData,
+}) => ({
+  loans,
+  loanReaction,
+  pendingLoan: pendingLoanData,
 });
 export default connect(
   mapStateToProps,
-  { allLons, approveLoan },
+  { allLoans, approveLoan, getPendingLoan },
 )(AdminTable);
