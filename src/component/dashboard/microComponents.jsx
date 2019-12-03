@@ -31,7 +31,7 @@ const dashboardButton = (
     {isAdmin ? (
       <>
         <Button
-          buttonText="History"
+          buttonText="All Loans"
           buttonClassName="apply__loan"
           type="button"
         />
