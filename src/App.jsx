@@ -6,6 +6,7 @@ import Header from './component/header/header';
 import Landing from './component/landing';
 import Protected from './component/hoc/protect';
 
+
 const App = () => (
   <div className="container">
     <Match path="/">{({ match }) => !match && <Header />}</Match>

@@ -6,6 +6,10 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: repeat(5, 1fr);
   gap: 10px;
+  background-image: url(../images/loan.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   &_container {
     grid-column: 1/-1;
     grid-row: 1/-1;
