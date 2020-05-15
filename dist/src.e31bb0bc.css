@@ -1,0 +1,867 @@
+.signup,
+.login {
+  display: grid;
+  height: 93vh;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  background-image: url(/loan.cd60ca65.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.signup_container,
+.login_container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  display: flex;
+  align-items: center;
+}
+.signup_container form,
+.login_container form {
+  margin: 0 auto;
+  width: 90%;
+  height: fit-content;
+  padding: 2rem 1rem;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+}
+.signup_container form label,
+.login_container form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.signup_container form label input,
+.login_container form label input {
+  width: 100%;
+  padding: 0.5rem;
+  height: 2.8rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
+  border-radius: 3px;
+}
+.signup_container form label input:focus,
+.login_container form label input:focus {
+  outline: 0;
+  border-color: gray;
+}
+.signup_container form label .misMatchPassword:focus,
+.login_container form label .misMatchPassword:focus {
+  border-color: #ff794d;
+}
+.signup_container form .error,
+.login_container form .error {
+  color: #ff794d;
+  font-size: 0.9rem;
+}
+.signup_container form button,
+.login_container form button {
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #6c63ff;
+}
+.signup_container form button:hover,
+.login_container form button:hover {
+  cursor: pointer;
+  background-color: #3366ff;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 550px) {
+  .signup_container,
+.login_container {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+  .signup_container form,
+.login_container form {
+    width: 70%;
+  }
+}
+@media (min-width: 850px) {
+  .signup_container,
+.login_container {
+    grid-column: 2/3;
+    grid-row: 1/-1;
+  }
+  .signup_container form,
+.login_container form {
+    width: 65%;
+  }
+}
+.box {
+  width: 2.5rem;
+  border: 1px solid #6c63ff;
+  height: 2rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  padding: 5px 5px;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+  align-content: space-between;
+  transition: 0.4ms;
+}
+.box__stroke {
+  width: 95%;
+  border: 1px solid #6c63ff;
+}
+.navbar {
+  color: #6c63ff;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  padding: 0 0.8rem;
+  margin: 0;
+  align-items: center;
+  list-style-type: none;
+  text-transform: capitalize;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+}
+.navbar .title__container {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0;
+}
+.navbar .title__container .title {
+  text-decoration: none;
+  font-size: 1.45rem;
+  font-weight: bold;
+  color: #6c63ff;
+}
+.navbar .items__container {
+  display: block;
+  width: 100%;
+}
+.navbar .remove__menubar {
+  display: none;
+}
+.navbar_items {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: right;
+  list-style-type: none;
+  font-size: 1.05rem;
+  font-weight: bold;
+  width: 100%;
+  padding: 0;
+  flex-direction: column;
+}
+.navbar_items .navbar_item_container {
+  margin: 0.5rem;
+}
+.navbar_items .navbar_item {
+  text-decoration: none;
+  color: #6c63ff;
+  font-weight: normal;
+  margin: 1rem 0;
+}
+.navbar_items .logout {
+  cursor: pointer;
+}
+.navbar__second__item {
+  position: absolute;
+  right: 3%;
+  top: 10%;
+}
+.navbar__second__item .cancel__hanbuger {
+  color: gray;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+@media (min-width: 550px) {
+  .navbar {
+    height: 7vh;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+  }
+  .navbar .title__container {
+    width: auto;
+    margin-top: 0;
+  }
+  .navbar .items__container {
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+  .navbar_items {
+    display: flex;
+    flex-direction: row;
+  }
+  .navbar_items .navbar_item_container {
+    width: auto;
+  }
+  .navbar_items .navbar_item {
+    padding: 1rem;
+    font-weight: 550;
+  }
+  .navbar__second__item {
+    display: none;
+  }
+}
+@media (min-width: 850px) {
+  .navbar {
+    height: 7vh;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+  }
+  .navbar .title__container {
+    width: auto;
+    margin-top: 0;
+  }
+  .navbar .items__container {
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+  .navbar_items {
+    display: flex;
+    flex-direction: row;
+  }
+  .navbar_items .navbar_item_container {
+    width: auto;
+  }
+  .navbar_items .navbar_item {
+    padding: 1rem;
+    font-weight: 550;
+  }
+  .navbar__second__item {
+    display: none;
+  }
+}
+.landing__page__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  background-image: url(/loan.cd60ca65.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.landing__page__container .landing__page__overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+.landing__page__container .landing__page__overlay .details__area {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.landing__page__container .landing__page__overlay .title__container {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.landing__page__container .landing__page__overlay .title__container h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #6c63ff;
+}
+.landing__page__container .landing__page__overlay .title__container h3 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: #000000;
+  font-weight: normal;
+}
+.landing__page__container .landing__page__overlay .button__container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  padding: 0 0.8rem;
+}
+.landing__page__container .landing__page__overlay .button__container .login__button,
+.landing__page__container .landing__page__overlay .button__container .signup__button {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.landing__page__container .landing__page__overlay .button__container .login__button {
+  background-color: #6c63ff;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+}
+.landing__page__container .landing__page__overlay .button__container .signup__button {
+  background-color: #ff9900;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 550px) {
+  .landing__page__container .landing__page__overlay .title__container {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  .landing__page__container .landing__page__overlay .button__container .login__button,
+.landing__page__container .landing__page__overlay .button__container .signup__button {
+    width: 15rem;
+  }
+  .landing__page__container .landing__page__overlay .button__container .login__button {
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 850px) {
+  .landing__page__container .landing__page__overlay .title__container {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+}
+.modal_container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+form {
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+  padding: 2rem 1rem;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+form label input {
+  width: 100%;
+  padding: 0.5rem;
+  height: 2.8rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
+  border-radius: 3px;
+}
+form label input:focus {
+  outline: 0;
+  border-color: gray;
+}
+.loan__container {
+  width: 95%;
+}
+
+.loan__form {
+  border-radius: 5px;
+  width: 100%;
+}
+.loan__form h3 {
+  color: #6c63ff;
+}
+.loan__form label .form__input__number::-webkit-inner-spin-button,
+.loan__form label .form__input__number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.loan__form label .form__input__number {
+  width: 96%;
+}
+.loan__form label #loan__duration {
+  margin-left: 2%;
+}
+.loan__form label .naira_symbol {
+  color: gray;
+}
+.loan__form__button {
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #6c63ff;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  transition-duration: 0.4ms;
+}
+.loan__form__button:hover {
+  cursor: pointer;
+  background-color: #3366ff;
+}
+.loan__form .cancel__button {
+  margin-right: 0.6rem;
+  color: #6c63ff;
+  background: #ffffff;
+}
+.loan__form .cancel__button:hover {
+  border: 0.5px solid #6c63ff;
+}
+
+@media (min-width: 550px) {
+  .loan__container {
+    width: 70%;
+  }
+}
+@media (min-width: 850px) {
+  .loan__container {
+    width: 40%;
+  }
+}
+.modal_content_container {
+  width: 33.33%;
+  height: auto;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 0.3rem 1.5rem;
+}
+.modal_content_container .cancel_button {
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: absolute;
+  right: 1rem;
+  color: gray;
+  transition: 0.4ms;
+}
+.modal_content_container .cancel_button:hover {
+  cursor: pointer;
+  color: #d3d3d3;
+}
+.modal_content_container .loan_details {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 2rem;
+  line-height: 1.4rem;
+}
+.modal_content_container .loan_details .loan_info {
+  font-weight: 600;
+  color: gray;
+}
+.modal_content_container .button_contianer {
+  margin-bottom: 1rem;
+}
+.modal_content_container .button_contianer .approve__loan {
+  font-size: 0.9rem;
+  color: #ffffff;
+  background-color: #6c63ff;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  transition: 0.4ms;
+}
+.modal_content_container .button_contianer .approve__loan:hover {
+  cursor: pointer;
+  background-color: #3366ff;
+}
+.modal_content_container .button_contianer .decline__loan {
+  font-size: 0.9rem;
+  color: #ffffff;
+  background-color: #ff9900;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  transition: 0.4ms;
+}
+.modal_content_container .button_contianer .decline__loan:hover {
+  cursor: pointer;
+  background-color: #ffa31a;
+}
+.loan__applications {
+  color: #6c63ff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+table {
+  font-family: inherit;
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+table thead td,
+table thead th,
+table tbody td,
+table tbody th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table thead tr,
+table tbody tr {
+  transition: 40ms;
+}
+table thead tr td,
+table tbody tr td {
+  color: #4d4d4d;
+}
+table thead tr:nth-child(even),
+table tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+table thead tr:hover,
+table tbody tr:hover {
+  cursor: pointer;
+}
+table thead {
+  color: #6c63ff;
+  font-weight: 300;
+}
+.loan__container {
+  width: 95%;
+}
+
+.loan__repayment__container .repay__loan__form {
+  border-radius: 3px;
+  width: 100%;
+}
+.loan__repayment__container .repay__loan__form .loan__repayment__details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.loan__repayment__container .repay__loan__form .loan__balance {
+  display: inline-block;
+  background-color: #ffa31a;
+  padding: 0.3rem 1.2rem;
+  color: #ffffff;
+  border-radius: 3px;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+.loan__repayment__container .repay__loan__form .loan__balance:hover {
+  cursor: pointer;
+}
+.loan__repayment__container .repay__loan__form .loan__balance__text {
+  color: #6c63ff;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.loan__repayment__container .repay__loan__form .error__message {
+  color: #ff0000;
+}
+.loan__repayment__container .repay__loan__form label .form__input__number::-webkit-inner-spin-button,
+.loan__repayment__container .repay__loan__form label .form__input__number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.loan__repayment__container .repay__loan__form label .naira__symbol {
+  color: gray;
+}
+.loan__repayment__container .repay__loan__form label .form__input__number {
+  width: 96%;
+}
+.loan__repayment__container .repay__loan__form .cancel__button {
+  background-color: #ffffff;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  margin-right: 0.8rem;
+}
+.loan__repayment__container .repay__loan__form .complete__button {
+  outline: none;
+}
+
+@media (min-width: 550px) {
+  .loan__container {
+    width: 70%;
+  }
+}
+@media (min-width: 850px) {
+  .loan__container {
+    width: 45%;
+  }
+}
+.notification__container {
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  height: 7vh;
+  padding: 1rem;
+  position: relative;
+  background-color: gray;
+}
+
+.close__button {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.3rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  height: 90vh;
+  gap: 10px;
+  margin-top: 1%;
+  padding: 0.2rem 1rem;
+}
+.dashboard_button {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  background-color: #6c63ff;
+}
+.dashboard_button button,
+.dashboard_button .apply__loan {
+  font-size: 1.2rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  padding: 1.3rem 1rem;
+  outline: none;
+}
+.dashboard_button button:hover,
+.dashboard_button .apply__loan:hover {
+  cursor: pointer;
+}
+.dashboard_main {
+  grid-column: 1/-1;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  grid-row: 1/-1;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard_main .apply__loan__mobile {
+  width: 8rem;
+  margin: 2rem 0;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.8rem 0;
+  border: none;
+  border-radius: 3px;
+  background-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  transition-duration: 0.4ms;
+}
+.dashboard_main .apply__loan__mobile:hover {
+  cursor: pointer;
+}
+.dashboard_main .pending_loans {
+  margin-bottom: 1rem;
+}
+.dashboard_main .approved_loans {
+  overflow: scroll;
+}
+.dashboard_main .pending_loans,
+.dashboard_main .approved_loans {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  margin-bottom: 3%;
+  border: 1px solid #dddddd;
+}
+.dashboard_main .approved_loans_table_title,
+.dashboard_main .pending_loans_table_title {
+  display: inline-block;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
+.dashboard_main .approved_loans table,
+.dashboard_main .pending_loans table {
+  font-family: inherit;
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+}
+.dashboard_main .approved_loans table thead td,
+.dashboard_main .approved_loans table thead th,
+.dashboard_main .approved_loans table tbody td,
+.dashboard_main .approved_loans table tbody th,
+.dashboard_main .pending_loans table thead td,
+.dashboard_main .pending_loans table thead th,
+.dashboard_main .pending_loans table tbody td,
+.dashboard_main .pending_loans table tbody th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.dashboard_main .approved_loans table thead tr,
+.dashboard_main .approved_loans table tbody tr,
+.dashboard_main .pending_loans table thead tr,
+.dashboard_main .pending_loans table tbody tr {
+  transition: 40ms;
+}
+.dashboard_main .approved_loans table thead tr td,
+.dashboard_main .approved_loans table tbody tr td,
+.dashboard_main .pending_loans table thead tr td,
+.dashboard_main .pending_loans table tbody tr td {
+  color: #4d4d4d;
+}
+.dashboard_main .approved_loans table thead tr:nth-child(even),
+.dashboard_main .approved_loans table tbody tr:nth-child(even),
+.dashboard_main .pending_loans table thead tr:nth-child(even),
+.dashboard_main .pending_loans table tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.dashboard_main .approved_loans table thead tr:hover,
+.dashboard_main .approved_loans table tbody tr:hover,
+.dashboard_main .pending_loans table thead tr:hover,
+.dashboard_main .pending_loans table tbody tr:hover {
+  cursor: pointer;
+}
+.dashboard_main .approved_loans table thead,
+.dashboard_main .pending_loans table thead {
+  color: #6c63ff;
+  font-weight: 300;
+}
+.dashboard_main .pending_loans .pending_loan_card {
+  width: 75%;
+  height: auto;
+  border: 1px solid #6c63ff;
+  border-radius: 3px;
+  padding: 0.3rem;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.dashboard_main .pending_loans .pending_loan_card .pending_loan_details {
+  list-style-type: none;
+  padding: 0;
+}
+.dashboard_main .pending_loans .pending_loan_card .pending_loan_details .details {
+  font-weight: bold;
+  color: gray;
+}
+.dashboard_main .pending_loans .pending_loan_card .repay_loan {
+  font-size: 0.9rem;
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.4rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff9900;
+  transition: 0.4ms;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+.dashboard_main .pending_loans .pending_loan_card .repay_loan:hover {
+  cursor: pointer;
+  background-color: #ffa31a;
+}
+.dashboard_main .pending_loans .pending_loan_card .repay_loan:active {
+  transform: translateY(4px);
+}
+@media (min-width: 550px) {
+  .dashboard_button {
+    display: flex;
+  }
+  .dashboard_main {
+    grid-column: 2/-1;
+  }
+  .dashboard_main .pending_loans .pending_loan_card {
+    width: 50%;
+  }
+  .dashboard .apply__loan__mobile {
+    display: none;
+  }
+}
+@media (min-width: 850px) {
+  .dashboard_button {
+    display: flex;
+  }
+  .dashboard_main {
+    grid-column: 2/-1;
+  }
+  .dashboard_main .pending_loans .pending_loan_card {
+    width: 25%;
+  }
+  .dashboard .apply__loan__mobile {
+    display: none;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0px;
+  font-family: Tahoma, sans-serif;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.col-1 {
+  min-width: 8.33%;
+}
+
+.col-2 {
+  min-width: 16.66;
+}
+
+.col-3 {
+  min-width: 25%;
+}
+
+.col-4 {
+  min-width: 33.33%;
+}
+
+.col-5 {
+  min-width: 41.66%;
+}
+
+.col-6 {
+  min-width: 50%;
+}
+
+.col-7 {
+  min-width: 58.33%;
+}
+
+.col-8 {
+  min-width: 66.66%;
+}
+
+.col-9 {
+  min-width: 75%;
+}
+
+.col-10 {
+  min-width: 83.33%;
+}
+
+.col-11 {
+  min-width: 91.66%;
+}
+
+.col-12 {
+  min-width: 100%;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=/src.e31bb0bc.css.map */
