@@ -4,4 +4,4 @@ node_modules/
 .env
 .vscode/
 coverage/
-dist/
+# dist/
