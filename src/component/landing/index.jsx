@@ -11,7 +11,7 @@ const LandingPage = ({ authLogin }) => {
         <div className="details__area">
           <div className="title__container">
             <h1>Lender</h1>
-            <h3>Never go out dry, we are here to help. </h3>
+            <h3>Never go out dry, we are here to help. Signup for a loan today </h3>
           </div>
           <div className="button__container">
             <Link to="/login" className="login__button">
